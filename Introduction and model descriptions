@@ -1,0 +1,28 @@
+Introduction
+The market for online advertisement has been growing rapidly in recent years. It becomes more and more crucial for companies to have a perfectly working online presence and effectively attract customers via internet campaigns to remain competitive. To assure these objectives, it is necessary to understand customers better than competitors and predict customers’ behavior and interest. Especially with access to a growing amount of data, it seems possible to learn about those aspects and make use of the generated knowledge.
+The presented project report is the result of the analysis of the given dataset about (potential) subscribers of a company’s product that was advertised in an online campaign. This campaign was conducted by the help of a banner that is presented to the user while browsing. The customer can subscribe to the product/service by clicking on the banner and then subscribe to manually what. In order to predict if a potential customer, a person to whom the banner is presented, indeed subscribes, this analysis has been conducted. To make the said prediction, characteristics of the potential subscriber will be considered. Those are used in various machine learning approaches throughout the following document. The aim is to create a model that predicts subscriptions with the highest possible accuracy. At first, an overview about the underlying dataset is given and an exploratory data analysis, EDA, will be conducted.
+
+Overview about the characteristics
+“Id”: This variable is a unique identifier for each record (potential subscriber). (integer)
+“age”: The age of the potential subscriber. (numeric)
+“job”: The job of the potential subscriber. (categorical)
+“martial”: The marital status of the potential subscriber. (categorical)
+“education”: The potential subscriber’s education. (categorical)
+“device”: The device with which the browsing has been conducted. (categorical)
+“day”: The day of the month at which the browsing has been conducted. (numeric)
+“month”: The month at which the browsing has been conducted. (numeric)
+“time_spent”: The time spent while browsing in minutes. (numeric)
+“banner_views”: How often the banner has been shown. (numeric)
+“banner_views_old”: How often an old and related banner was shown to this potential subscriber. (numeric)
+“days_elapsed_old”: Number of days that have past since the potential subscriber saw the last time a banner of an old and related campaign. (numeric)
+“outcome_old”: The success of the old and related campaign. (categorical)
+4 features without name, the first 3 are categorical (binary) and a 4th one is numeric.
+
+Logistic regression
+Logistic regression belongs to the basic algorithms of machine learning in classification. The principle is not very complex and is not computational intense, compared to most other models in this report. If there are p predictors, then p + 1 model parameters are to be fitted, 1 for each predictor and 1 for the intercept, what is conducted by Bernoulli ML. Based on these fitted parameters, for each observation that is to be predicted, the probability for this instance to belong to one or the other class is calculated. In this case, there are 2 classes, “subscribed” or “not subscribed”. Therefore, if the calculated probability of belonging to class “subscribed” is larger than 0.5, the prediction will be “subscribed” and vice versa. In special cases, this cut-off value can be adapted for example, when making a Type-I error has distinct severe consequences than making a Type-II error.
+
+Support Vector Machines
+The principle of Support Vector Machines is to find a decision boundary with p (number of predictors) -1 dimensions that separates the training data as accurate as possible. This multidimensional decision boundary it then applied to separate the test data or the any new data of interest. SVM are an enhancement or generalization of Support Vector Classifiers in a sense that they automatically widen the feature space and therefore allow for non-linear decision boundaries, compared to regular Support Vector Classifiers, where one had to create the new dimensions manually. For this, SVM use either the linear or the Kernel method while the Kernel can be as well a linear function but is not necessarily linear.
+
+Neural Networks
+Neural Networks also belong to the class of supervised learning techniques. A neural network consists of several layers where there are 3 types, the input layer, the hidden layer and the output layer and each layer is comprised of nodes. The nodes of the input layer are the observed values for the predictors for the current instance that is under examination, therefore, there are p input nodes with p being the number of predictors. These values taken as input for a function whose result is the value for the connected nodes node in the following layer, combined with a node specific term, called “bias”. Each connection has an additional parameter, called “weight”. This principle is applied through the whole network for all node connections. The final layer is either a single node, in case of regression which gives the predicted value, or several nodes, one for each class in case of classification. Here, the probabilities of an instance for belonging to a class is given in the last node what is then the classification. The parameters of the model, the weight and biases are fitted with a technique, called “Backpropagation”.
